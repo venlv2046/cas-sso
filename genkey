@@ -1,0 +1,26 @@
+1.create file ./demoCA/ ./demoCA/newcerts/ ./demoCA/index.txt ./demoCA/serial
+2. create CA private key
+openssl genrsa -des3 -out ca.key 2048
+3. create CA public key
+ openssl req -new -x509 -days 7305 -key ca.key -out ca.crt
+ 4. create private key for demo1
+ openssl genrsa -des3 -out demo1.pem 1024
+ 5. create public key for demo1
+ openssl rsa -in demo.testcas.com.pem -out demo1.key
+ 6. convert demo1.pem to demo1.csr 
+ openssl req -new -key demo1.pem -out demo1.csr
+ 7. use CA to sign demo1's  public key
+ openssl ca -policy policy_anything -days 1460 -cert ca.crt -keyfile ca.key -in demo1.csr -out demo1.crt
+ 
+ 8. config nginx, add 
+        ssl_certificate      demo1.crt;
+        ssl_certificate_key  demo1.key;
+        in https server module
+ 9. config nginx, add
+          rewrite ^(.*)$  https://$server_name$1 permanent;
+          in http server module
+ 10. use InstallCert.java to import into JDK trust list.
+ 
+  
+      
+      
