@@ -6,6 +6,7 @@
 	<artifactId>cas-sso</artifactId>
 	<packaging>war</packaging>
 	<version>1.0</version>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -18,24 +19,54 @@
 							<artifactId>cas-server-webapp</artifactId>
 						</overlay>
 					</overlays>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>
 		<finalName>cas</finalName>
 	</build>
+
 	<dependencies>
+
 		<dependency>
 			<groupId>org.jasig.cas</groupId>
 			<artifactId>cas-server-webapp</artifactId>
-			<version>4.2.6</version>
+			<version>4.0.4</version>
 			<type>war</type>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.jasig.cas</groupId>
 			<artifactId>cas-server-core</artifactId>
-			<version>4.2.6</version>
+			<version>4.0.4</version>
 		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mchange</groupId>
+			<artifactId>c3p0</artifactId>
+			<version>0.9.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jasig.cas</groupId>
+			<artifactId>cas-server-support-jdbc</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jasig.cas</groupId>
+			<artifactId>cas-server-webapp-support</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+
+
 	</dependencies>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>

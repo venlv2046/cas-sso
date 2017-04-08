@@ -1,0 +1,13 @@
+create database cas;
+use cas;
+create table user(
+	id int primary key auto_increment,
+	name varchar(255),
+	passwd varchar(255),
+	firstname varchar(255),
+	lastname varchar(255),
+	mobile varchar(20)
+	
+);
+
+insert into user (name,passwd,firstname,lastname,mobile) values('root','63a9f0ea7bb98050796b649e85481845','lewis','lv','18188886666');
